@@ -4,13 +4,31 @@
 
 <h1>Students</h1>
 
-<div id="students">
-  <% @students.each do |student| %>
-    <%= render student %>
-    <p>
-      <%= link_to "Show this student", student %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name |</th>
+      <th>Program |</th>
+      <th>Year Level |</th>
+      <th>Department |</th>
+      <th>Show Student |</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.program %></td>
+        <td><%= student.year_level %></td>
+        <td><%= student.department.name if student.department %></td>
+        <td>
+          <center><%= link_to "Show", student %></center>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <%= link_to "New student", new_student_path %>

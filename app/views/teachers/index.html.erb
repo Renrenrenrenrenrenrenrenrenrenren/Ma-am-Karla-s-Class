@@ -4,13 +4,31 @@
 
 <h1>Teachers</h1>
 
-<div id="teachers">
-  <% @teachers.each do |teacher| %>
-    <%= render teacher %>
-    <p>
-      <%= link_to "Show this teacher", teacher %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name |</th>
+      <th>Email |</th>
+      <th>Specialization |</th>
+      <th>Staus |</th>
+      <th>Department |</th>
+      <th>Show Subject |</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.each do |teacher| %>
+      <tr>
+        <td><%= teacher.name %></td>
+        <td><%= teacher.email %></td>
+        <td><%= teacher.specialization %></td>
+        <td><%= teacher.status %></td>
+        <td><%= teacher.department.name %></td>
+        <td>
+          <center><%= link_to "Show", teacher %></center>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New teacher", new_teacher_path %>

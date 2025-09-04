@@ -4,13 +4,25 @@
 
 <h1>Classlists</h1>
 
-<div id="classlists">
-  <% @classlists.each do |classlist| %>
-    <%= render classlist %>
-    <p>
-      <%= link_to "Show this classlist", classlist %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Student Name |</th>
+      <th>Section |</th>
+      <th>Show Classlist |</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @classlists.each do |classlist| %>
+      <tr>
+        <td><%= classlist.student.name %></td>
+        <td><%= classlist.section.name %></td>
+        <td>
+          <center><%= link_to "Show", classlist %></center>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New classlist", new_classlist_path %>
