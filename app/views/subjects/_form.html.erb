@@ -19,7 +19,12 @@
   <div>
     <%= form.label :teacher_id, "Teacher", style: "display: block" %>
     <%= form.collection_select :teacher_id, Teacher.all, :id, :name, prompt: "Select a teacher" %>
-  </div>
+  </div> 
+
+   <div>
+    <%= form.label :number_of_units, style: "display: block" %>
+    <%= form.text_field :number_of_units %>
+  </div>      
 
   <div>
     <%= form.submit %>

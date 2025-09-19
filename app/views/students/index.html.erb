@@ -10,6 +10,8 @@
       <th>Name |</th>
       <th>Program |</th>
       <th>Year Level |</th>
+      <th>Number of Units |</th>
+      <th>Total Assessment |</th>
       <th>Department |</th>
       <th>Show Student |</th>
     </tr>
@@ -20,6 +22,8 @@
         <td><%= student.name %></td>
         <td><%= student.program %></td>
         <td><%= student.year_level %></td>
+        <td><%= student.number_of_units %></td>
+        <td><%= student.total_assessment %></td>
         <td><%= student.department.name if student.department %></td>
         <td>
           <center><%= link_to "Show", student %></center>
