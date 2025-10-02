@@ -26,6 +26,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
+        @student.department.increment!(:employee_count)
         format.html { redirect_to @student, notice: "Student was successfully created." }
         format.json { render :show, status: :created, location: @student }
       else
@@ -51,6 +52,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1 or /students/1.json
   def destroy
     @student.destroy!
+    @student.department.decrement!(:employee_count)
 
     respond_to do |format|
       format.html { redirect_to students_path, notice: "Student was successfully destroyed.", status: :see_other }

@@ -4,6 +4,8 @@
 
 <h3>List of Students:</h3>
 
+
+
 <table>
   <thead>
     <tr>
@@ -23,6 +25,8 @@
   </tbody>
 </table>
 
+<h3> Number of Student <%= @department.student_count %></h3>
+
 <h3>List of Teachers:</h3>
 
 <table>
@@ -31,6 +35,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>Specialization</th>
+      <th>Monthly Salary</th>
       <th>Status</th>
     </tr>
   </thead>
@@ -40,11 +45,37 @@
         <td><%= teachers.name %></td>
         <td><%= teachers.email %></td>
         <td><%= teachers.specialization %></td>
+        <td><%= teachers.monthly_salary %></td>
         <td><%= teachers.status %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<h3>List of Staff:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Monthly Salary</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @department.staffs.each do |staff| %>
+      <tr>
+        <td><%= staff.name %></td>
+        <td><%= staff.email %></td>
+        <td><%= staff.monthly_salary %></td>
+        <td><%= staff.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3> Number of Employee <%= @department.employee_count %></h3>
 
 <div>
   <%= link_to "Edit this department", edit_department_path(@department) %> |
