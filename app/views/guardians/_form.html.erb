@@ -27,12 +27,6 @@
   </div>
 
   <div>
-    <%= form.label :student_id, "Select Student", style: "display: block" %>
-    <%= form.collection_select :student_id, Student.all, :id, :name, prompt: "Choose a student" %>
-  </div>
-
-
-  <div>
     <%= form.submit %>
   </div>
 <% end %>
