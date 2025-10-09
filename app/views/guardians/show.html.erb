@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @guardian %>
+
+<div>
+  <%= link_to "Edit this guardian", edit_guardian_path(@guardian) %> |
+  <%= link_to "Back to guardians", guardians_path %>
+
+  <%= button_to "Destroy this guardian", @guardian, method: :delete %>
+</div>

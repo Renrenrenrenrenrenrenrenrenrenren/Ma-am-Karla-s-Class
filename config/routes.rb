@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :relationships
+  resources :guardians
   resources :staffs
   resources :classlists
   resources :sections

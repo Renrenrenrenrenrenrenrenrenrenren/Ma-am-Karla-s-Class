@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_02_065552) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_09_080206) do
   create_table "classlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "section_id", null: false
@@ -27,6 +27,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_02_065552) do
     t.datetime "updated_at", null: false
     t.integer "employee_count", default: 0
     t.integer "student_count", default: 0
+  end
+
+  create_table "guardians", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "email_address"
+    t.string "contact_number"
+    t.integer "number_of_students"
+    t.bigint "student_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_guardians_on_student_id"
+  end
+
+  create_table "relationships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "guardian_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "relation"
+    t.index ["guardian_id"], name: "index_relationships_on_guardian_id"
+    t.index ["student_id"], name: "index_relationships_on_student_id"
   end
 
   create_table "sections", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -60,6 +81,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_02_065552) do
     t.datetime "updated_at", null: false
     t.integer "number_of_units", default: 0
     t.integer "total_assessment", default: 0
+    t.integer "number_of_guardians", default: 0
     t.index ["department_id"], name: "index_students_on_department_id"
   end
 
@@ -87,6 +109,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_02_065552) do
 
   add_foreign_key "classlists", "sections"
   add_foreign_key "classlists", "students"
+  add_foreign_key "guardians", "students"
+  add_foreign_key "relationships", "guardians"
+  add_foreign_key "relationships", "students"
   add_foreign_key "sections", "subjects"
   add_foreign_key "staffs", "departments"
   add_foreign_key "students", "departments"

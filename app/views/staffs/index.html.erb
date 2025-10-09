@@ -2,7 +2,7 @@
 
 <% content_for :title, "Staffs" %>
 
-<h1>List Staffs</h1>
+<h1>Staffs</h1>
 
 <table>
   <thead>
@@ -12,7 +12,7 @@
       <th>Monthly Salary</th>
       <th>Status</th>
       <th>Department</th>
-      <th>Show</th>
+      <th>Show Staff</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
         <td><%= staff.monthly_salary %></td>
         <td><%= staff.status %></td>
         <td><%= staff.department.name %></td>
-        <td><%= link_to "Show this staff", staff_path(staff) %></td>
+        <td><%= link_to "Show", staff_path(staff) %></td>
       </tr>
     <% end %>
   </tbody>

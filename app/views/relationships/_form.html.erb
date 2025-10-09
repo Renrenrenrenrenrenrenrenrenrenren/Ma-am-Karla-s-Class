@@ -1,0 +1,32 @@
+<%= form_with(model: relationship) do |form| %>
+  <% if relationship.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(relationship.errors.count, "error") %> prohibited this relationship from being saved:</h2>
+
+      <ul>
+        <% relationship.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :student_id, style: "display: block" %>
+    <%= form.collection_select :student_id, Student.all, :id, :name, prompt: "Select a student" %>
+  </div>
+
+  <div>
+    <%= form.label :guardian_id, style: "display: block" %>
+    <%= form.collection_select :guardian_id, Guardian.all, :id, :name, prompt: "Select a guardian" %>
+  </div>
+        
+  <div>
+    <%= form.label :relation, "Relation", style: "display: block" %>
+    <%= form.text_field :relation %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

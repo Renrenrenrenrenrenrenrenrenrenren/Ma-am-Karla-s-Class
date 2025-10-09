@@ -1,0 +1,31 @@
+<div id="<%= dom_id guardian %>">
+  <p>
+    <strong>Name:</strong>
+    <%= guardian.name %>
+  </p>
+
+  <p>
+    <strong>Email address:</strong>
+    <%= guardian.email_address %>
+  </p>
+
+  <p>
+    <strong>Contact number:</strong>
+    <%= guardian.contact_number %>
+  </p>
+
+  <p>
+    <strong>Students and Relations:</strong><br>
+    <% if guardian.relationships.any? %>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <% guardian.relationships.each do |rel| %>
+          <li>
+            <%= rel.student.name %> – <%= rel.relation.presence || "No relation specified" %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <em>No students assigned</em>
+    <% end %>
+  </p>
+</div>
