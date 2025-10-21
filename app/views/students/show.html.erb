@@ -1,29 +1,65 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/students/show.html.erb -->
 
-<%= render @student %>
+<!-- Header Section -->
+<div style="background-color: #2c3e50; color: white; padding: 15px 25px; border-radius: 8px; border: 2px solid #1a242f; 
+            display: flex; align-items: center; margin-bottom: 25px; box-shadow: 0 3px 6px rgba(0,0,0,0.15);">
+  <i class="bi bi-person-badge-fill" style="font-size: 1.8rem; margin-right: 10px;"></i>
+  <h1 style="margin: 0; font-size: 1.8rem; font-weight: 700;"><%= @student.name %></h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Section</th>
-      <th>Teacher</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @student.classlists.each do |classlist| %>
-      <tr>
-        <td><%= classlist.section.subject.name %></td>
-        <td><%= classlist.section.name %></td>
-        <td><%= classlist.section.subject.teacher.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- Student Details Card -->
+<div class="card mb-4 shadow-sm">
+  <div class="card-body">
+    <p><strong>📘 Year Level:</strong> <%= @student.year_level %></p>
+    <p><strong>🎓 Program:</strong> <%= @student.program %></p>
+    <p><strong>💰 Total Assessment:</strong> <%= @student.total_assessment %></p>
+    <p><strong>📏 Total Units:</strong> <%= @student.number_of_units %></p>
+    <p><strong>🏛 Department:</strong> <%= @student.department.name %></p>
+    <p><strong>👨‍👩‍👧‍👦 Number of Guardians:</strong> <%= @student.number_of_guardians %></p>
+  </div>
+</div>
 
-<div>
-  <%= link_to "Edit this student", edit_student_path(@student) %> |
-  <%= link_to "Back to students", students_path %>
+<!-- List of Subjects -->
+<div class="card shadow-sm mb-4">
+  <div class="card-header bg-light d-flex align-items-center">
+    <i class="bi bi-book" style="margin-right: 8px;"></i>
+    <h5 class="mb-0">List of Subjects</h5>
+  </div>
+  <div class="card-body p-0">
+    <table class="table table-bordered table-striped mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>Subject</th>
+          <th>Section</th>
+          <th>Units</th>
+          <th>Teacher</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @student.classlists.each do |classlist| %>
+          <tr>
+            <td><%= classlist.section.subject.name %></td>
+            <td><%= classlist.section.name %></td>
+            <td><%= classlist.section.subject.number_of_units %></td>
+            <td><%= classlist.section.subject.teacher.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-  <%= button_to "Destroy this student", @student, method: :delete %>
+<!-- Action Buttons -->
+<div class="d-flex gap-2 mt-3">
+  <%= link_to edit_student_path(@student), class: "btn btn-warning" do %>
+    <i class="bi bi-pencil-square"></i> Edit Student
+  <% end %>
+
+  <%= link_to students_path, class: "btn btn-success" do %>
+    <i class="bi bi-arrow-left-circle"></i> Back to Students
+  <% end %>
+
+  <%= button_to @student, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } do %>
+    <i class="bi bi-trash-fill"></i> Delete Student
+  <% end %>
 </div>

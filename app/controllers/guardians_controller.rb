@@ -65,6 +65,6 @@ class GuardiansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def guardian_params
-      params.expect(guardian: [ :name, :email_address, :contact_number, :number_of_students, :student_id ])
+      params.expect(guardian: [ :name, :email_address, :contact_number, :number_of_students])
     end
 end

@@ -1,38 +1,42 @@
-<p style="color: green"><%= notice %></p>
+<!-- Header with background rectangle -->
+<div style="background-color: #2c3e50; color: white; padding: 15px 20px; border-radius: 8px; display: flex; align-items: center; margin-bottom: 1.5rem; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+  <i class="bi bi-mortarboard-fill" style="font-size: 1.8rem; margin-right: 10px;"></i>
+  <h1 style="margin: 0; font-size: 1.8rem; font-weight: 700;">Students</h1>
+</div>
 
-<% content_for :title, "Students" %>
-
-<h1>Students</h1>
-
-<table>
-  <thead>
+<table style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border: 1px solid #dee2e6;">
+  <thead style="background-color: #2c3e50; color: white; text-align: left;">
     <tr>
-      <th>Name |</th>
-      <th>Program |</th>
-      <th>Year Level |</th>
-      <th>Number of Units |</th>
-      <th>Total Assessment |</th>
-      <th>Department |</th>
-      <th>Show Student |</th>
+      <th style="padding: 12px;">Name</th>
+      <th style="padding: 12px;">Program</th>
+      <th style="padding: 12px;">Year Level</th>
+      <th style="padding: 12px;">Units</th>
+      <th style="padding: 12px;">Assessment</th>
+      <th style="padding: 12px;">Department</th>
+      <th style="padding: 12px; text-align: center;">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.name %></td>
-        <td><%= student.program %></td>
-        <td><%= student.year_level %></td>
-        <td><%= student.number_of_units %></td>
-        <td><%= student.total_assessment %></td>
-        <td><%= student.department.name if student.department %></td>
-        <td>
-          <center><%= link_to "Show", student %></center>
+    <% @students.each_with_index do |student, i| %>
+      <tr style="background-color: <%= i.even? ? '#f8f9fa' : '#ffffff' %>; border-bottom: 1px solid #dee2e6;">
+        <td style="padding: 12px; font-weight: 500; color: #2c3e50;"><%= student.name %></td>
+        <td style="padding: 12px;"><%= student.program %></td>
+        <td style="padding: 12px; text-align: center;"><%= student.year_level %></td>
+        <td style="padding: 12px; text-align: center;"><%= student.number_of_units %></td>
+        <td style="padding: 12px;">₱<%= number_with_delimiter(student.total_assessment) %></td>
+        <td style="padding: 12px;"><%= student.department.name if student.department %></td>
+        <td style="padding: 12px;">
+          <div style="display: flex; justify-content: center; gap: 6px;">
+            <%= link_to 'Show', student, style: 'background:#6c63ff; color:white; padding:6px 12px; border-radius:5px; text-decoration:none; font-size:0.9rem;' %>
+            <%= link_to 'Edit', edit_student_path(student), style: 'background:#f1c40f; color:black; padding:6px 12px; border-radius:5px; text-decoration:none; font-size:0.9rem;' %>
+            <%= button_to 'Delete', student, method: :delete, style: 'background:#e74c3c; color:white; padding:6px 12px; border:none; border-radius:5px; font-size:0.9rem; cursor:pointer;' %>
+          </div>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to "New student", new_student_path %>
+<div style="margin-top: 1.5rem;">
+  <%= link_to "➕ New Student", new_student_path, style: "background:#27ae60; color:white; padding:8px 14px; border-radius:6px; text-decoration:none; font-weight:500;" %>
+</div>

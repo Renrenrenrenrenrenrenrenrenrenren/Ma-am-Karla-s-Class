@@ -1,5 +1,4 @@
 class Guardian < ApplicationRecord
-  belongs_to :student
   has_many :students, through: :relationship, dependent: :destroy 
   has_many :relationships, dependent: :destroy
 

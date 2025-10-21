@@ -1,10 +1,132 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* Sidebar base */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: #262626;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  z-index: 1000;
+}
+
+/* Expanded sidebar */
+.sidebar:hover {
+  width: 350px;
+}
+
+/* Sidebar logo */
+.sidebar .logo {
+  display: flex;
+  align-items: center;
+  padding: 20px 15px;
+}
+
+.sidebar .logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.sidebar .logo span {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.sidebar:hover .logo span {
+  opacity: 1;
+}
+
+/* Nav links */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  color: #bbb;
+  text-decoration: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.sidebar ul li a i {
+  min-width: 30px;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* Hidden text by default */
+.sidebar ul li a span {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+/* When expanded (hover or dropdown open) */
+.sidebar:hover ul li a span,
+.sidebar ul li.dropdown.open a span {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Hover effect */
+.sidebar ul li a:hover {
+  background-color: #444;
+  color: white;
+}
+
+/* Main content adjustment */
+.main-content {
+  margin-left: 80px;
+  padding: 30px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .main-content {
+  margin-left: 250px;
+}
+
+/* Dropdown menu inside sidebar */
+.sidebar ul li ul {
+  background-color: #2f2f2f;
+  border-left: 2px solid #444;
+  margin-top: 5px;
+  padding-left: 0;
+}
+
+.sidebar ul li ul li a {
+  font-size: 16px;
+  padding: 10px 30px;
+  color: #ccc;
+}
+
+.sidebar ul li ul li a:hover {
+  background-color: #444;
+  color: white;
+}
+
+.sidebar ul li.dropdown.open a span {
+  opacity: 1;
+  visibility: visible;
+}
+
+
