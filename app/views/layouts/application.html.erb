@@ -22,6 +22,7 @@
     </div>
 
     <ul>
+      <li><%= link_to raw('<i class="bi bi-building"></i><span>Departments</span>'), departments_path %></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#studentMenu" aria-expanded="false">
           <i class="bi bi-people"></i><span>Students</span>
@@ -31,13 +32,13 @@
           <li><%= link_to raw('<i class="bi bi-list"></i><span>All Students</span>'), students_path %></li>
         </ul>
       </li>
-      <li><%= link_to raw('<i class="bi bi-person-badge"></i><span>Teachers</span>'), teachers_path %></li>
+      <li><%= link_to raw('<i class="bi bi-book"></i><span>Subjects</span>'), subjects_path %></li>
+      <li><%= link_to raw('<i class="bi bi-person-video3"></i><span>Teachers</span>'), teachers_path %></li>
+      <li><%= link_to raw('<i class="bi bi-diagram-3"></i><span>Sections</span>'), sections_path %></li>
+      <li><%= link_to raw('<i class="bi bi-journal-text"></i><span>Class List</span>'), classlists_path %></li>
       <li><%= link_to raw('<i class="bi bi-person-lines-fill"></i><span>Staffs</span>'), staffs_path %></li>
       <li><%= link_to raw('<i class="bi bi-person-hearts"></i><span>Guardians</span>'), guardians_path %></li>
-      <li><%= link_to raw('<i class="bi bi-journal-text"></i><span>Class List</span>'), classlists_path %></li>
-      <li><%= link_to raw('<i class="bi bi-book"></i><span>Subjects</span>'), subjects_path %></li>
-      <li><%= link_to raw('<i class="bi bi-diagram-3"></i><span>Sections</span>'), sections_path %></li>
-      <li><%= link_to raw('<i class="bi bi-building"></i><span>Departments</span>'), departments_path %></li>
+      <li><%= link_to raw('<i class="bi bi-heart-fill"></i><span>Relationships</span>'), relationships_path %></li>
     </ul>
   </div>
 
